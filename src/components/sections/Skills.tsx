@@ -37,10 +37,10 @@ const skillGroups = [
 ];
 
 const coreSkills = [
-  { name: 'Flutter / Dart', level: 92, color: '#4f8ef7' },
-  { name: 'Firebase', level: 85, color: '#a855f7' },
-  { name: 'REST APIs', level: 88, color: '#22d3ee' },
-  { name: 'BLoC Architecture', level: 82, color: '#f97316' },
+  { name: 'Flutter / Dart', level: 80, color: '#4f8ef7' },
+  { name: 'Firebase', level: 80, color: '#a855f7' },
+  { name: 'REST APIs', level: 80, color: '#22d3ee' },
+  { name: 'BLoC Architecture', level: 70, color: '#f97316' },
   { name: 'Android (Kotlin)', level: 70, color: '#22c55e' },
   { name: 'iOS (Swift)', level: 65, color: '#ec4899' },
   { name: 'DevOps & Cloud', level: 25, color: '#eab308' },
