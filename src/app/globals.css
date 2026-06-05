@@ -423,4 +423,9 @@ body {
   .container-custom {
     padding: 0 16px;
   }
+
+  .hidden-mobile {
+    display: none !important;
+  }
 }
+

@@ -117,7 +117,7 @@ export default function Hero() {
             top: `${tech.y}%`,
             zIndex: 1,
           }}
-          className={i % 2 === 0 ? 'animate-float' : 'animate-float-delay'}
+          className={i % 2 === 0 ? 'animate-float hidden-mobile' : 'animate-float-delay hidden-mobile'}
         >
           <div
             style={{

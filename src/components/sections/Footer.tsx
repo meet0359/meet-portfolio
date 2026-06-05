@@ -13,8 +13,8 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { icon: <FaGithub size={16} />, href: 'https://github.com/meetshah', label: 'GitHub' },
-  { icon: <FaLinkedinIn size={16} />, href: 'https://linkedin.com/in/meetshah', label: 'LinkedIn' },
+  { icon: <FaGithub size={16} />, href: 'https://github.com/meet0359', label: 'GitHub' },
+  { icon: <FaLinkedinIn size={16} />, href: 'https://linkedin.com/in/-meet-shah', label: 'LinkedIn' },
   { icon: <Mail size={16} />, href: 'mailto:shahmeet1722@gmail.com', label: 'Email' },
 ];
 

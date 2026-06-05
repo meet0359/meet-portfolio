@@ -34,13 +34,13 @@ const socialLinks = [
   {
     icon: <FaLinkedinIn size={16} />,
     label: 'LinkedIn',
-    href: 'https://linkedin.com/in/meetshah',
+    href: 'https://linkedin.com/in/-meet-shah',
     color: '#4f8ef7',
   },
   {
     icon: <FaGithub size={16} />,
     label: 'GitHub',
-    href: 'https://github.com/meetshah',
+    href: 'https://github.com/meet0359',
     color: '#a855f7',
   },
 ];
