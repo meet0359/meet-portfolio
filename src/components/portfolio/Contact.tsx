@@ -5,21 +5,47 @@ const Contact = () => {
   const profile = useProfile();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio contact from ${form.name}`);
-    const body = encodeURIComponent(
-      `${form.message}\n\n---\nFrom: ${form.name}\nReply-To: ${form.email}`
-    );
-    const mailto = `mailto:${profile.email}?subject=${subject}&body=${body}`;
-    window.location.href = mailto;
-    setSent(true);
-    setForm({ name: "", email: "", message: "" });
+    setIsSubmitting(true);
+    
+    try {
+      // Send email using Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          // TODO: Get your free access key from https://web3forms.com/ and paste it here
+          access_key: "c76374be-d5e4-430b-8f33-118d0ead552e",
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          subject: `Portfolio contact from ${form.name}`,
+          from_name: form.name
+        }),
+      });
+
+      if (response.ok) {
+        setSent(true);
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        alert("Something went wrong while sending your message. Please try again or email me directly.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong while sending your message. Please try again or email me directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -123,7 +149,7 @@ const Contact = () => {
                 <div className="text-5xl mb-4">🎉</div>
                 <h3 className="text-2xl font-bold mb-2">Ready to send</h3>
                 <p className="text-muted-foreground">
-                  Your email client should have opened with the message. Click send there to reach me. Thanks for reaching out—I'll get back to you soon.
+                  Your message has been sent successfully! I will get back to you as soon as possible. Thanks for reaching out.
                 </p>
                 <button
                   onClick={() => setSent(false)}
@@ -172,9 +198,10 @@ const Contact = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all hover-lift glow-primary"
+                  disabled={isSubmitting}
+                  className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all hover-lift glow-primary disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message ✈️
+                  {isSubmitting ? "Sending..." : "Send Message ✈️"}
                 </button>
               </form>
             )}
